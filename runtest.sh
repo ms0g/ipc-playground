@@ -1,0 +1,12 @@
+./pipe &
+./fifo_producer &
+./fifo_consumer &
+./mq_producer &
+./mq_consumer &
+./signal_receiver &
+./signal_sender &
+./flocking &
+./shm_producer &
+./shm_consumer &
+./xsi_sem &
+./posix_sem &
