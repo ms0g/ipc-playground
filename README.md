@@ -12,10 +12,6 @@ Linux IPC Examples
 
 ### Building
 ```bash
-make clean
-make
-```
-### Test
-```bash
-make test
+cd build
+./builder.sh
 ```
