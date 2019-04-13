@@ -4,6 +4,7 @@ Linux IPC Examples
 + Fifo
 + File Locking
 + Message Queue
++ Memory Mapped File
 + Signal
 + Shared Memory
 + Unix Domain Socket
