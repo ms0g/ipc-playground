@@ -6,20 +6,13 @@
 #include <sys/shm.h>
 
 #define SHM_SIZE 1024
+#define KEY 0x73616D69
 
 int main() {
-    key_t key;
     int shmid;
     char *data;
 
-    /* make the key: */
-    if ((key = ftok("shm_producer.c", 'S')) == -1) {
-        perror("ftok");
-        exit(1);
-    }
-
-
-    if ((shmid = shmget(key, SHM_SIZE, 0644 | IPC_CREAT)) == -1) {
+    if ((shmid = shmget(KEY, SHM_SIZE, 0644 | IPC_CREAT)) == -1) {
         perror("shmget");
         exit(1);
     }

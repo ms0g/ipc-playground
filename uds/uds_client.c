@@ -23,8 +23,8 @@ int main(void) {
 
     server_addr.sun_family = AF_UNIX;
     strcpy(server_addr.sun_path, SOCK_PATH);
-    if (connect(s, (struct sockaddr *) &server_addr, strlen(server_addr.sun_path) + sizeof(server_addr.sun_family)) ==
-        -1) {
+    if (connect(s, (struct sockaddr *) &server_addr,
+                strlen(server_addr.sun_path) + sizeof(server_addr.sun_family)) == -1) {
         perror("connect");
         exit(1);
     }
@@ -39,7 +39,7 @@ int main(void) {
 
         if ((t = recv(s, str, 100, 0)) > 0) {
             str[t] = '\0';
-            printf("echo> %s", str);
+            printf("Got from server> %s", str);
         } else {
             if (t < 0) perror("recv");
             else printf("Server closed connection\n");

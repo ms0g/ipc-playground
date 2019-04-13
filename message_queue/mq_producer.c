@@ -11,18 +11,13 @@ struct msgbuf {
     char mtext[200];
 };
 
+#define KEY 0x73616D69
+
 int main(void) {
     struct msgbuf buf;
     int msqid;
-    key_t key;
 
-
-    if ((key = ftok("mq_producer.c", 'B')) == -1) {
-        perror("ftok");
-        exit(1);
-    }
-
-    if ((msqid = msgget(key, 0644 | IPC_CREAT)) == -1) {
+    if ((msqid = msgget(KEY, 0644 | IPC_CREAT)) == -1) {
         perror("msgget");
         exit(1);
     }

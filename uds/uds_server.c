@@ -34,7 +34,7 @@ int main(void) {
     }
 
     for (;;) {
-        int done, n;
+        int n;
         printf("Waiting for a connection...\n");
 
         if ((client_socket = accept(server_socket,
@@ -46,20 +46,18 @@ int main(void) {
         printf("Connected.\n");
 
         char str[100];
-        done = 0;
         do {
             n = recv(client_socket, str, 100, 0);
             if (n <= 0) {
                 if (n < 0) perror("recv");
-                done = 1;
+
             }
 
-            if (!done)
+            if (n > 0)
                 if (send(client_socket, str, n, 0) < 0) {
                     perror("send");
-                    done = 1;
                 }
-        } while (!done);
+        } while (n <= 0);
 
         close(client_socket);
     }

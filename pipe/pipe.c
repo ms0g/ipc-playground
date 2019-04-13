@@ -8,7 +8,7 @@
 
 
 int main() {
-    char *msg = "test";
+
     int pfds[2];
     char buf[30];
     pid_t chpid;
@@ -16,6 +16,7 @@ int main() {
     pipe(pfds);
 
     if (!(chpid = fork())) {
+        char *msg = "test";
         write(pfds[1], msg, 5);
         printf("[PIPE] child: wrote %lu bytes, msg:%s\n", strlen(msg), msg);
         printf("[PIPE] Child: Exiting, %d\n", EXIT_SUCCESS);
